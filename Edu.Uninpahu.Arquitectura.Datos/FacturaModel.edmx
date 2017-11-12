@@ -1,0 +1,352 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FACTURAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="ID_CLIENTE" />
+          </Key>
+          <Property Name="ID_CLIENTE" Type="int" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="APELLIDO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FIJO" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="CELULAR" Type="char" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="D_FACTURA">
+          <Key>
+            <PropertyRef Name="ID_D_FACTURA" />
+          </Key>
+          <Property Name="ID_D_FACTURA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_FACTURA_FK" Type="int" Nullable="false" />
+          <Property Name="CANTIDAD" Type="int" Nullable="false" />
+          <Property Name="VALOR_IVA" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SUBTOTAL" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ID_PRODUCTO_FK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EMPLEADO">
+          <Key>
+            <PropertyRef Name="ID_EMPLEADO" />
+          </Key>
+          <Property Name="ID_EMPLEADO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="APELLIDO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DIRECCION" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CARGO" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="FIJO" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="CELULAR" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FACTURA">
+          <Key>
+            <PropertyRef Name="ID_FACTURA" />
+          </Key>
+          <Property Name="ID_FACTURA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_CLIENTE_FK" Type="int" Nullable="false" />
+          <Property Name="ID_EMPLEADO_FK" Type="int" Nullable="false" />
+          <Property Name="FECHA" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRODUCTO">
+          <Key>
+            <PropertyRef Name="CODIGO" />
+          </Key>
+          <Property Name="CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CANTIDAD" Type="int" Nullable="false" />
+          <Property Name="VALOR_UNITARIO" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="PORCENTAJE_IVA" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_D_FACTURA_ToFACTURA">
+          <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="1" />
+          <End Role="D_FACTURA" Type="Self.D_FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FACTURA">
+              <PropertyRef Name="ID_FACTURA" />
+            </Principal>
+            <Dependent Role="D_FACTURA">
+              <PropertyRef Name="ID_FACTURA_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_FACTURA_ToPRODUCTO">
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+          <End Role="D_FACTURA" Type="Self.D_FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="CODIGO" />
+            </Principal>
+            <Dependent Role="D_FACTURA">
+              <PropertyRef Name="ID_PRODUCTO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FACTURA_ToCLIENTE">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Principal>
+            <Dependent Role="FACTURA">
+              <PropertyRef Name="ID_CLIENTE_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FACTURA_ToEMPLEADO">
+          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="1" />
+          <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLEADO">
+              <PropertyRef Name="ID_EMPLEADO" />
+            </Principal>
+            <Dependent Role="FACTURA">
+              <PropertyRef Name="ID_EMPLEADO_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FACTURAModelStoreContainer">
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="D_FACTURA" EntityType="Self.D_FACTURA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EMPLEADO" EntityType="Self.EMPLEADO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FACTURA" EntityType="Self.FACTURA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_D_FACTURA_ToFACTURA" Association="Self.FK_D_FACTURA_ToFACTURA">
+            <End Role="FACTURA" EntitySet="FACTURA" />
+            <End Role="D_FACTURA" EntitySet="D_FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_FACTURA_ToPRODUCTO" Association="Self.FK_D_FACTURA_ToPRODUCTO">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="D_FACTURA" EntitySet="D_FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FACTURA_ToCLIENTE" Association="Self.FK_FACTURA_ToCLIENTE">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="FACTURA" EntitySet="FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FACTURA_ToEMPLEADO" Association="Self.FK_FACTURA_ToEMPLEADO">
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+            <End Role="FACTURA" EntitySet="FACTURA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FACTURAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fijo" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Celular" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Factura" Relationship="Self.FK_FACTURA_ToCLIENTE" FromRole="CLIENTE" ToRole="FACTURA" />
+        </EntityType>
+        <EntityType Name="D_Factura">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdFactura" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="ValorIva" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Subtotal" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="IdProducto" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Factura" Relationship="Self.FK_D_FACTURA_ToFACTURA" FromRole="D_FACTURA" ToRole="FACTURA" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_D_FACTURA_ToPRODUCTO" FromRole="D_FACTURA" ToRole="PRODUCTO" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cargo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fijo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Celular" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Factura" Relationship="Self.FK_FACTURA_ToEMPLEADO" FromRole="EMPLEADO" ToRole="FACTURA" />
+        </EntityType>
+        <EntityType Name="Factura">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCliente" Type="Int32" Nullable="false" />
+          <Property Name="IdEmpleado" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_FACTURA_ToCLIENTE" FromRole="FACTURA" ToRole="CLIENTE" />
+          <NavigationProperty Name="D_Factura" Relationship="Self.FK_D_FACTURA_ToFACTURA" FromRole="FACTURA" ToRole="D_FACTURA" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK_FACTURA_ToEMPLEADO" FromRole="FACTURA" ToRole="EMPLEADO" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="ValorUnitario" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="PorcetajeIva" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="D_Factura" Relationship="Self.FK_D_FACTURA_ToPRODUCTO" FromRole="PRODUCTO" ToRole="D_FACTURA" />
+        </EntityType>
+        <Association Name="FK_FACTURA_ToCLIENTE">
+          <End Role="CLIENTE" Type="FACTURAModel.Cliente" Multiplicity="1" />
+          <End Role="FACTURA" Type="FACTURAModel.Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FACTURA">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_FACTURA_ToFACTURA">
+          <End Role="FACTURA" Type="FACTURAModel.Factura" Multiplicity="1" />
+          <End Role="D_FACTURA" Type="FACTURAModel.D_Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FACTURA">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="D_FACTURA">
+              <PropertyRef Name="IdFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_FACTURA_ToPRODUCTO">
+          <End Role="PRODUCTO" Type="FACTURAModel.Producto" Multiplicity="1" />
+          <End Role="D_FACTURA" Type="FACTURAModel.D_Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="D_FACTURA">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FACTURA_ToEMPLEADO">
+          <End Role="EMPLEADO" Type="FACTURAModel.Empleado" Multiplicity="1" />
+          <End Role="FACTURA" Type="FACTURAModel.Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLEADO">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FACTURA">
+              <PropertyRef Name="IdEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FACTURAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CLIENTE" EntityType="FACTURAModel.Cliente" />
+          <EntitySet Name="D_FACTURA" EntityType="FACTURAModel.D_Factura" />
+          <EntitySet Name="EMPLEADO" EntityType="FACTURAModel.Empleado" />
+          <EntitySet Name="FACTURA" EntityType="FACTURAModel.Factura" />
+          <EntitySet Name="PRODUCTO" EntityType="FACTURAModel.Producto" />
+          <AssociationSet Name="FK_FACTURA_ToCLIENTE" Association="Self.FK_FACTURA_ToCLIENTE">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="FACTURA" EntitySet="FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_FACTURA_ToFACTURA" Association="Self.FK_D_FACTURA_ToFACTURA">
+            <End Role="FACTURA" EntitySet="FACTURA" />
+            <End Role="D_FACTURA" EntitySet="D_FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_FACTURA_ToPRODUCTO" Association="Self.FK_D_FACTURA_ToPRODUCTO">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="D_FACTURA" EntitySet="D_FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FACTURA_ToEMPLEADO" Association="Self.FK_FACTURA_ToEMPLEADO">
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+            <End Role="FACTURA" EntitySet="FACTURA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FACTURAModelStoreContainer" CdmEntityContainer="FACTURAEntities">
+          <EntitySetMapping Name="CLIENTE">
+            <EntityTypeMapping TypeName="FACTURAModel.Cliente">
+              <MappingFragment StoreEntitySet="CLIENTE">
+                <ScalarProperty Name="Id" ColumnName="ID_CLIENTE" />
+                <ScalarProperty Name="Nombre" ColumnName="NOMBRE" />
+                <ScalarProperty Name="Apellido" ColumnName="APELLIDO" />
+                <ScalarProperty Name="Fijo" ColumnName="FIJO" />
+                <ScalarProperty Name="Celular" ColumnName="CELULAR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="D_FACTURA">
+            <EntityTypeMapping TypeName="FACTURAModel.D_Factura">
+              <MappingFragment StoreEntitySet="D_FACTURA">
+                <ScalarProperty Name="Id" ColumnName="ID_D_FACTURA" />
+                <ScalarProperty Name="IdFactura" ColumnName="ID_FACTURA_FK" />
+                <ScalarProperty Name="Cantidad" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="ValorIva" ColumnName="VALOR_IVA" />
+                <ScalarProperty Name="Subtotal" ColumnName="SUBTOTAL" />
+                <ScalarProperty Name="IdProducto" ColumnName="ID_PRODUCTO_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMPLEADO">
+            <EntityTypeMapping TypeName="FACTURAModel.Empleado">
+              <MappingFragment StoreEntitySet="EMPLEADO">
+                <ScalarProperty Name="Id" ColumnName="ID_EMPLEADO" />
+                <ScalarProperty Name="Nombre" ColumnName="NOMBRE" />
+                <ScalarProperty Name="Apellido" ColumnName="APELLIDO" />
+                <ScalarProperty Name="Direccion" ColumnName="DIRECCION" />
+                <ScalarProperty Name="Cargo" ColumnName="CARGO" />
+                <ScalarProperty Name="Fijo" ColumnName="FIJO" />
+                <ScalarProperty Name="Celular" ColumnName="CELULAR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FACTURA">
+            <EntityTypeMapping TypeName="FACTURAModel.Factura">
+              <MappingFragment StoreEntitySet="FACTURA">
+                <ScalarProperty Name="Id" ColumnName="ID_FACTURA" />
+                <ScalarProperty Name="IdCliente" ColumnName="ID_CLIENTE_FK" />
+                <ScalarProperty Name="IdEmpleado" ColumnName="ID_EMPLEADO_FK" />
+                <ScalarProperty Name="Fecha" ColumnName="FECHA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTO">
+            <EntityTypeMapping TypeName="FACTURAModel.Producto">
+              <MappingFragment StoreEntitySet="PRODUCTO">
+                <ScalarProperty Name="Codigo" ColumnName="CODIGO" />
+                <ScalarProperty Name="Nombre" ColumnName="NOMBRE" />
+                <ScalarProperty Name="Cantidad" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="ValorUnitario" ColumnName="VALOR_UNITARIO" />
+                <ScalarProperty Name="PorcetajeIva" ColumnName="PORCENTAJE_IVA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

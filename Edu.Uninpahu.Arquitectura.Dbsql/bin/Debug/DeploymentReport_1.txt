@@ -1,0 +1,20 @@
+﻿** Aspectos destacados
+     Tablas que se volverán a compilar
+       Ninguno
+     Índices clúster que se van a quitar
+       Ninguno
+     Índices clúster que se van a crear
+       Ninguno
+     Posibles problemas de datos
+       El tipo de la columna FECHA de la tabla [dbo].[FACTURA] es actualmente  INT NOT NULL pero se está cambiando a  DATETIME
+         NOT NULL. Puede que se pierdan datos.
+
+** Acciones del usuario
+     Modificar
+       [dbo].[FACTURA] (Tabla)
+
+** Acciones de compatibilidad
+
+El tipo de la columna FECHA de la tabla [dbo].[FACTURA] es actualmente  INT NOT NULL pero se está cambiando a  DATETIME NOT NULL. Puede que se pierdan datos.
+Las bases de datos del proyecto y de destino tienen una configuración de intercalación diferente. Se pueden producir errores de implementación.
+

@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2006
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Edu.Uninpahu.Arquitectura.View", "Edu.Uninpahu.Arquitectura.View\Edu.Uninpahu.Arquitectura.View.csproj", "{3B081550-FD27-45A0-9306-0C47771BA479}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Edu.Uninpahu.Arquitectura.Dbsql", "Edu.Uninpahu.Arquitectura.Dbsql\Edu.Uninpahu.Arquitectura.Dbsql.sqlproj", "{2378646F-CC77-4166-828B-4D5FAAAAF043}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Edu.Uninpahu.Arquitectura.Datos", "Edu.Uninpahu.Arquitectura.Datos\Edu.Uninpahu.Arquitectura.Datos.csproj", "{97D0B688-4C6B-4326-BB56-2636380D4699}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Edu.Uninpahu.Arquitectura.Negocio", "Edu.Uninpahu.Arquitectura.Negocio\Edu.Uninpahu.Arquitectura.Negocio.csproj", "{D9334D1A-0AA1-4B02-879B-CF135F627E65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Edu.Uninpahu.Arquitectura.Dominio", "Edu.Uninpahu.Arquitectura.Dominio\Edu.Uninpahu.Arquitectura.Dominio.csproj", "{E319F086-833E-4D02-B260-FEA717C7C767}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3B081550-FD27-45A0-9306-0C47771BA479}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B081550-FD27-45A0-9306-0C47771BA479}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B081550-FD27-45A0-9306-0C47771BA479}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B081550-FD27-45A0-9306-0C47771BA479}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2378646F-CC77-4166-828B-4D5FAAAAF043}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2378646F-CC77-4166-828B-4D5FAAAAF043}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2378646F-CC77-4166-828B-4D5FAAAAF043}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{2378646F-CC77-4166-828B-4D5FAAAAF043}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2378646F-CC77-4166-828B-4D5FAAAAF043}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2378646F-CC77-4166-828B-4D5FAAAAF043}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{97D0B688-4C6B-4326-BB56-2636380D4699}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97D0B688-4C6B-4326-BB56-2636380D4699}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97D0B688-4C6B-4326-BB56-2636380D4699}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97D0B688-4C6B-4326-BB56-2636380D4699}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9334D1A-0AA1-4B02-879B-CF135F627E65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9334D1A-0AA1-4B02-879B-CF135F627E65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9334D1A-0AA1-4B02-879B-CF135F627E65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9334D1A-0AA1-4B02-879B-CF135F627E65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E319F086-833E-4D02-B260-FEA717C7C767}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E319F086-833E-4D02-B260-FEA717C7C767}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E319F086-833E-4D02-B260-FEA717C7C767}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E319F086-833E-4D02-B260-FEA717C7C767}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2A87E69B-2E3F-4F96-AFC3-C11799594798}
+	EndGlobalSection
+EndGlobal

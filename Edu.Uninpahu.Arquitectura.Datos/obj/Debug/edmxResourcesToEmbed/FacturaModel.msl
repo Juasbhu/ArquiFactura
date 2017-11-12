@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FACTURAModelStoreContainer" CdmEntityContainer="FACTURAEntities">
+    <EntitySetMapping Name="CLIENTE">
+      <EntityTypeMapping TypeName="FACTURAModel.Cliente">
+        <MappingFragment StoreEntitySet="CLIENTE">
+          <ScalarProperty Name="Id" ColumnName="ID_CLIENTE" />
+          <ScalarProperty Name="Nombre" ColumnName="NOMBRE" />
+          <ScalarProperty Name="Apellido" ColumnName="APELLIDO" />
+          <ScalarProperty Name="Fijo" ColumnName="FIJO" />
+          <ScalarProperty Name="Celular" ColumnName="CELULAR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="D_FACTURA">
+      <EntityTypeMapping TypeName="FACTURAModel.D_Factura">
+        <MappingFragment StoreEntitySet="D_FACTURA">
+          <ScalarProperty Name="Id" ColumnName="ID_D_FACTURA" />
+          <ScalarProperty Name="IdFactura" ColumnName="ID_FACTURA_FK" />
+          <ScalarProperty Name="Cantidad" ColumnName="CANTIDAD" />
+          <ScalarProperty Name="ValorIva" ColumnName="VALOR_IVA" />
+          <ScalarProperty Name="Subtotal" ColumnName="SUBTOTAL" />
+          <ScalarProperty Name="IdProducto" ColumnName="ID_PRODUCTO_FK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EMPLEADO">
+      <EntityTypeMapping TypeName="FACTURAModel.Empleado">
+        <MappingFragment StoreEntitySet="EMPLEADO">
+          <ScalarProperty Name="Id" ColumnName="ID_EMPLEADO" />
+          <ScalarProperty Name="Nombre" ColumnName="NOMBRE" />
+          <ScalarProperty Name="Apellido" ColumnName="APELLIDO" />
+          <ScalarProperty Name="Direccion" ColumnName="DIRECCION" />
+          <ScalarProperty Name="Cargo" ColumnName="CARGO" />
+          <ScalarProperty Name="Fijo" ColumnName="FIJO" />
+          <ScalarProperty Name="Celular" ColumnName="CELULAR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FACTURA">
+      <EntityTypeMapping TypeName="FACTURAModel.Factura">
+        <MappingFragment StoreEntitySet="FACTURA">
+          <ScalarProperty Name="Id" ColumnName="ID_FACTURA" />
+          <ScalarProperty Name="IdCliente" ColumnName="ID_CLIENTE_FK" />
+          <ScalarProperty Name="IdEmpleado" ColumnName="ID_EMPLEADO_FK" />
+          <ScalarProperty Name="Fecha" ColumnName="FECHA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCTO">
+      <EntityTypeMapping TypeName="FACTURAModel.Producto">
+        <MappingFragment StoreEntitySet="PRODUCTO">
+          <ScalarProperty Name="Codigo" ColumnName="CODIGO" />
+          <ScalarProperty Name="Nombre" ColumnName="NOMBRE" />
+          <ScalarProperty Name="Cantidad" ColumnName="CANTIDAD" />
+          <ScalarProperty Name="ValorUnitario" ColumnName="VALOR_UNITARIO" />
+          <ScalarProperty Name="PorcetajeIva" ColumnName="PORCENTAJE_IVA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

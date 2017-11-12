@@ -1,0 +1,5 @@
+D:\Documentos\Visual Studio 2017\Projects\Edu.Uninpahu.Arquitectura.Taller1\Edu.Uninpahu.Arquitectura.Negocios\bin\Debug\Edu.Uninpahu.Arquitectura.Negocios.dll
+D:\Documentos\Visual Studio 2017\Projects\Edu.Uninpahu.Arquitectura.Taller1\Edu.Uninpahu.Arquitectura.Negocios\bin\Debug\Edu.Uninpahu.Arquitectura.Negocios.pdb
+D:\Documentos\Visual Studio 2017\Projects\Edu.Uninpahu.Arquitectura.Taller1\Edu.Uninpahu.Arquitectura.Negocios\obj\Debug\Edu.Uninpahu.Arquitectura.Negocios.csprojResolveAssemblyReference.cache
+D:\Documentos\Visual Studio 2017\Projects\Edu.Uninpahu.Arquitectura.Taller1\Edu.Uninpahu.Arquitectura.Negocios\obj\Debug\Edu.Uninpahu.Arquitectura.Negocios.dll
+D:\Documentos\Visual Studio 2017\Projects\Edu.Uninpahu.Arquitectura.Taller1\Edu.Uninpahu.Arquitectura.Negocios\obj\Debug\Edu.Uninpahu.Arquitectura.Negocios.pdb

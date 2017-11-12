@@ -1,0 +1,26 @@
+﻿** Aspectos destacados
+     Tablas que se volverán a compilar
+       Ninguno
+     Índices clúster que se van a quitar
+       Ninguno
+     Índices clúster que se van a crear
+       Ninguno
+     Posibles problemas de datos
+       Ninguno
+
+** Acciones del usuario
+     Crear
+       [dbo].[CLIENTE] (Tabla)
+       [dbo].[D_FACTURA] (Tabla)
+       [dbo].[EMPLEADO] (Tabla)
+       [dbo].[FACTURA] (Tabla)
+       [dbo].[PRODUCTO] (Tabla)
+       [dbo].[FK_D_FACTURA_ToFACTURA] (Clave externa)
+       [dbo].[FK_D_FACTURA_ToPRODUCTO] (Clave externa)
+       [dbo].[FK_FACTURA_ToCLIENTE] (Clave externa)
+       [dbo].[FK_FACTURA_ToEMPLEADO] (Clave externa)
+
+** Acciones de compatibilidad
+
+Las bases de datos del proyecto y de destino tienen una configuración de intercalación diferente. Se pueden producir errores de implementación.
+
